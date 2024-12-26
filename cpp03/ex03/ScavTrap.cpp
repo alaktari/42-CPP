@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:33:12 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/24 14:44:00 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:36:13 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
+	Energy_point = 50;
 	std::cout << "ScavTrap default constructor called\n";
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap constructor for " << name << " called\n";
+	Energy_point = 50;
+	std::cout << "ScavTrap constructor for " << this->name << " called\n";
 }
 
 ScavTrap::~ScavTrap(void)

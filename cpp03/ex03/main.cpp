@@ -6,40 +6,27 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:31:28 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/24 15:32:39 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:38:27 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
+
+#include "DiamondTrap.hpp"
 
 int main()
 {
-	{
-		FragTrap frag;
-		std::cout << std::endl;
+    DiamondTrap diamond("Diamond");
 
-		frag.attack("EVIL");
-		frag.highFivesGuys();
-		frag.takeDamage(100);
-		frag.attack("EVIL");
-		frag.beRepaired(100);
+    diamond.attack("enemy"); // From ScavTrap
+    diamond.takeDamage(20);  // From ClapTrap
+    diamond.beRepaired(15);  // From ClapTrap
+    diamond.highFivesGuys(); // From FragTrap
+    diamond.whoAmI();        // Unique to DiamondTrap
 
-		std::cout << std::endl;
-	}
-	std::cout << "===================================\n";
-	{
-		FragTrap	frag("LBATAL");
-		std::cout << std::endl;
+    std::cout << "\n\n";
+    diamond.whoAmI();
+    std::cout << "\n\n";
 
-		frag.attack("WELD_NASS");
-		frag.takeDamage(99);
-		frag.beRepaired(19);
-		frag.attack("WELD_NASS");
-		frag.takeDamage(50);
-		frag.beRepaired(100);
-		frag.attack("WELD_NASS");
-		frag.highFivesGuys();
-		
-		std::cout << std::endl;
-	}
+    return 0;
 }

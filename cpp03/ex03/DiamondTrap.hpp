@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:53:17 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/24 15:54:37 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/25 19:02:08 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : protected FragTrap, protected ScavTrap
+class DiamondTrap : public FragTrap, public ScavTrap
 {
 	private:
 		std::string name;
