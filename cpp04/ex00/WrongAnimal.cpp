@@ -6,11 +6,11 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:12:38 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 19:34:32 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:56:34 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
+# include "Polymorphism.hpp"
 
 WrongAnimal::WrongAnimal(void): type("Unknown")
 {

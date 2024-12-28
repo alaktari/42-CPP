@@ -6,11 +6,11 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:18:10 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 19:43:29 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:56:28 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
+# include "Polymorphism.hpp"
 
 WrongCat::WrongCat(void)
 {

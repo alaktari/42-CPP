@@ -6,11 +6,11 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:36:28 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 19:32:05 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:57:37 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+# include "Polymorphism.hpp"
 
 Dog::Dog(void)
 {

@@ -6,11 +6,11 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:22:57 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 19:30:36 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:57:24 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+# include "Polymorphism.hpp"
 
 Animal::Animal(void): type("Unknown")
 {

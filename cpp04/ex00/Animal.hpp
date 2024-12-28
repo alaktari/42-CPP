@@ -6,15 +6,14 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:13:25 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 21:40:03 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:53:17 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-# include <iostream>
-# include <string>
+# include "Polymorphism.hpp"
 
 class Animal
 {

@@ -6,15 +6,11 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:21:48 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 21:10:46 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:58:03 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+# include "Polymorphism.hpp"
 
 int main()
 {
