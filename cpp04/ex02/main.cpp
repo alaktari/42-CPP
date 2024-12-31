@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:21:48 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/29 20:40:26 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/31 14:51:55 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,38 @@
 int main()
 {
 
-	AAnimal *A1 = new Dog;
+	{
+			// TEST 1:
+		AAnimal *A1 = new Dog;
 
-	std::cout << "Type:" << A1->getType() << "\n";
-	A1->makeSound();
-	delete A1;
+		std::cout << "\nType:" << A1->getType() << "\n";
+		A1->makeSound();
+		delete A1;
 
-	std::cout << std::endl;
+		std::cout << std::endl;
+
+		AAnimal *A2 = new Cat;
+		std::cout << "\nType:" << A2->getType() << "\n";
+		A2->makeSound();
+		
+		std::cout << std::endl;
+		delete A2;
+
+		// Animal A; // ERROR!!
+		// Animal *A = new Animal; // ERROR!!
+
+	}
 	
-	AAnimal *A2 = new Cat;
-	std::cout << "Type:" << A2->getType() << "\n";
-	A2->makeSound();
-	delete A2;
+	std::cout << "\n-------------------------\n\n";
 
-	// Animal A; // ERROR!!
-	// Animal *A = new Animal; // ERROR!!
+	{
+			// TEST	2:
+		Dog kelb;
+		
+		std::cout << "\n the type : " << kelb.getType() << "\n";
+		kelb.setIdea("i like playing with cats", 90);
+		std::cout << " the idea : " << kelb.getIdea(90) << "\n\n";
+	}
 	
 	return 0;
 }
