@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 00:30:11 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/24 13:59:56 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/30 13:56:16 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 #include <iostream>
 #include <string>
-
-# define H_PTS 1
-# define E_PTS 2
-# define A_DMG 3
 
 class ClapTrap
 {
@@ -37,6 +33,5 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
-
 
 #endif

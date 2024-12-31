@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 00:41:34 by alaktari          #+#    #+#             */
-/*   Updated: 2024/11/22 09:39:07 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:10:44 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,11 @@ ClapTrap::ClapTrap(void) : name("default"), Hit_points(10), Energy_point(10), At
 
 ClapTrap::ClapTrap(std::string name): name(name), Hit_points(10), Energy_point(10), Attack_demage(0)
 {
-	std::cout << "ClapTrap constructor for " << name << " called\n";
+	std::cout << "ClapTrap constructor for " << this->name << " called\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "ClapTrap Copy constructor called\n";
-	*this = other;
-}
-
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
-{
-	std::cout << "ClapTrap Copy assignement called\n";
 	if (this != &other)
 	{
 		name = other.name;
@@ -38,6 +31,19 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 		Energy_point = other.Energy_point;
 		Attack_demage = other.Attack_demage;
 	}
+	std::cout << "ClapTrap Copy constructor for " << name << " called\n";
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+	if (this != &other)
+	{
+		name = other.name;
+		Hit_points = other.Hit_points;
+		Energy_point = other.Energy_point;
+		Attack_demage = other.Attack_demage;
+	}
+	std::cout << "ClapTrap Copy assignement " << name << " called\n";
 	return *this;
 }
 
@@ -92,7 +98,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		Hit_points += amount;
 		Energy_point--;
-		std::cout << "ClapTrap " << name << "has repaired itself";
+		std::cout << "ClapTrap " << name << " has repaired itself";
 		std::cout << ", restoring " << amount << " hit points";
 		std::cout << "  (EP:" << Energy_point << ", HP:" << Hit_points << ")\n";
 	}

@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:33:12 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/24 14:44:10 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:09:31 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
+	Hit_points = 100;
+	Energy_point = 50;
+	Attack_demage = 20;
 	std::cout << "ScavTrap default constructor called\n";
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap constructor for " << name << " called\n";
+	Hit_points = 100;
+	Energy_point = 50;
+	Attack_demage = 20;
+	std::cout << "ScavTrap constructor for " << this->name << " called\n";
 }
 
 ScavTrap::~ScavTrap(void)
@@ -29,19 +35,14 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
-	std::cout << "ScavTrap Copy constructor called\n";
-	*this = other;
+	std::cout << "ScavTrap Copy constructor for " << name << " called\n";
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
-	std::cout << "ScavTrap Copy assignement called\n";
 	if (this != &other)
-	{
-		this->Hit_points = other.Hit_points;
-		this->Energy_point = other.Energy_point;
-		this->Attack_demage = other.Attack_demage;
-	}
+		ClapTrap::operator=(other);
+	std::cout << "ScavTrap Copy assignement for " << name << " called\n";
 	return *this;
 }
 
@@ -59,6 +60,8 @@ void ScavTrap::attack(const std::string& target)
 		std::cout << ", causing " << Attack_demage << " points of demage!";
 		std::cout << "  (EP:" << Energy_point << ", HP:" << Hit_points << ")\n";
 	}
+	else
+		std::cout << "Can't attack " << target << ", Already defeated\n";
 }
 
 void ScavTrap::guardGate(void)
@@ -66,5 +69,5 @@ void ScavTrap::guardGate(void)
 	if (Hit_points > 0 && Energy_point > 0)
 		std::cout << "ScavTrap " << name << " is now in Gate keeper mode.\n";
 	else
-		std::cout << "already defeated\n";
+		std::cout << "ScavTrap is not in Gate keeper mode any more, already defeated\n";
 }

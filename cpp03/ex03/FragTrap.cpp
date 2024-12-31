@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 11:25:32 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/26 14:35:51 by alaktari         ###   ########.fr       */
+/*   Updated: 2024/12/30 14:59:20 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 FragTrap::FragTrap(void) : ClapTrap()
 {
-	Hit_points = 200;
+	Hit_points = 100;
+	Energy_point = 100;
 	Attack_demage = 30;
 	std::cout << "FragTrap default constructor called\n";
 }
@@ -22,6 +23,7 @@ FragTrap::FragTrap(void) : ClapTrap()
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	Hit_points = 100;
+	Energy_point = 100;
 	Attack_demage = 30;
 	std::cout << "FragTrap constructor for " << this->name << " called\n";
 }
@@ -33,19 +35,14 @@ FragTrap::~FragTrap(void)
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
-	std::cout << "FragTrap Copy constructor called\n";
-	*this = other;
+	std::cout << "FragTrap Copy constructor " << name << " called\n";
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &other)
 {
-	std::cout << "FragTrap Copy assignement called\n";
 	if (this != &other)
-	{
-		this->name = other.name;
-		this->Hit_points = other.Hit_points;
-		this->Energy_point = other.Energy_point;
-	}
+		ClapTrap::operator=(other);
+	std::cout << "FragTrap Copy assignement for " << name << " called\n";
 	return *this;
 }
 
