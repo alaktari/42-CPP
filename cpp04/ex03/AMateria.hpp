@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 14:54:23 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/31 16:11:39 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/01 15:29:25 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 # include <string>
 # include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria
 {
     protected:
         std::string type;
     public:
         AMateria(void);
-        ~AMateria(void);
         AMateria(const AMateria& other);
         AMateria& operator=(const AMateria& other);
+        virtual ~AMateria(void);
     
         AMateria(std::string const & type);
 

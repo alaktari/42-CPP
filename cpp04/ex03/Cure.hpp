@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:00:08 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/31 20:50:32 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/01 11:50:14 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ class Cure : public AMateria
 {
     public:
         Cure(void);
-        ~Cure(void);
+        virtual ~Cure(void);
         Cure(const Cure& other);
         Cure& operator=(const Cure& other);
-        std::string clone(void);
-
-        AMateria* clone() const;
+        
+        AMateria* clone(void) const;
+        void use(ICharacter& target);
 };
 
 #endif

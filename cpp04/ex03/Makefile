@@ -1,7 +1,9 @@
 NAME	 = materia
-SRC		 = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp IMateriaSource.cpp
+SRC		 = main.cpp AMateria.cpp Ice.cpp Cure.cpp \
+		   ICharacter.cpp Character.cpp \
+		   IMateriaSource.cpp MateriaSource.cpp
 CXX		 = c++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = #-Wall -Wextra -Werror -std=c++98
 OBJ		 = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
