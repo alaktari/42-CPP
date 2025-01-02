@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:14:45 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 21:53:59 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:04:37 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class WrongCat : public WrongAnimal
 		~WrongCat(void);
 		WrongCat(const WrongCat &other);
 		WrongCat &operator=(const WrongCat &other);
+		void makeSound(void) const;
 };
 
 #endif

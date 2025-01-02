@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 19:22:27 by alaktari          #+#    #+#             */
-/*   Updated: 2025/01/01 21:03:11 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:33:27 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void MateriaSource::clearMaterias(void)
 	{
 		if (materias[i])
 		{
+			// // std::cout << "====>   I'm clearing <==== \n";
 			delete materias[i];
 			materias[i] = NULL;
 		}
@@ -44,20 +45,20 @@ void MateriaSource::clearMaterias(void)
 MateriaSource::MateriaSource(void)
 {
 	initializeMaterias();
-	std::cout << "Materia Constructor called\n";
+	// std::cout << "Materia Constructor called\n";
 }
 
 MateriaSource::~MateriaSource(void)
 {
 	clearMaterias();
-	std::cout << "Materia destructor called\n";
+	// std::cout << "Materia destructor called\n";
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other)
 {
 	if (this != &other)
 		copyMateria(other);
-	std::cout << "Materia Copy Constructor called\n";
+	// std::cout << "Materia Copy Constructor called\n";
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
@@ -67,18 +68,18 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 		clearMaterias();
 		copyMateria(other);
 	}
-	std::cout << "MateriaSource Copy Assignment called\n";
+	// std::cout << "MateriaSource Copy Assignment called\n";
 	return *this;
 }
 
 
-void MateriaSource::learnMateria(AMateria* matreia)
+void MateriaSource::learnMateria(AMateria* materia)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		if (!materias[i])
 		{
-			materias[i] = matreia->clone();
+			materias[i] = materia->clone();
 			break ;
 		}
 	}

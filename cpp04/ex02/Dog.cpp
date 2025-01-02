@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:36:28 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/29 20:41:09 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:25:45 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ Dog::~Dog(void)
 	delete brain;
 }
 
-Dog::Dog(const Dog& other)
+Dog::Dog(const Dog& other) : AAnimal(other)
 {
 	std::cout << "Dog Copy constructor called\n";
-	*this = other;
+	brain = new Brain(*other.brain);
 }
 
 Dog& Dog::operator=(const Dog& other)
 {
-	std::cout << "Cat Copy assignement called\n";
+	std::cout << "Dog Copy assignement called\n";
 	if (this != &other)
 	{
 		AAnimal::operator=(other);
+		delete brain;
 		brain = new Brain(*other.getBrain());
 	}
 	return *this;

@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 09:56:04 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/29 12:43:09 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:58:08 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ Brain::~Brain(void)
 
 Brain::Brain(const Brain& other)
 {
-    std::cout << "Copy Constructor called\n";
+    std::cout << "Brain Copy Constructor called\n";
     *this = other;
 }
 
 Brain& Brain::operator=(const Brain& other)
 {
-    std::cout << "Copy Assignment called\n";
+    std::cout << "Brain Copy Assignment called\n";
     if (this != &other)
     {
         for (int i = 0; i < 100; i++)

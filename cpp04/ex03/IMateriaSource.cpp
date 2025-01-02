@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 16:34:56 by alaktari          #+#    #+#             */
-/*   Updated: 2025/01/01 21:00:06 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:33:27 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 IMateriaSource::~IMateriaSource(void)
 {
-    std::cout << "IMateriaSource Destructor called\n";
+    // std::cout << "IMateriaSource Destructor called\n";
 }

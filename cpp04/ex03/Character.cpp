@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:14:57 by alaktari          #+#    #+#             */
-/*   Updated: 2025/01/01 20:49:49 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:33:27 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void Character::clearSlots(void)
 	{
 		if (slot[i])
 		{
+			// std::cout << "clearrrr\n";
 			delete slot[i];
 			slot[i] = NULL;
 		}
@@ -44,13 +45,13 @@ void	Character::copySlots(const Character& other)
 Character::Character(void) : name("default")
 {
 	initializeSlots();
-	std::cout << "Character default Constructor called\n";
+	// std::cout << "Character default Constructor called\n";
 }
 
 Character::Character(const std::string& name) : name(name)
 {
 	initializeSlots();
-	std::cout << "Character Parameterized Constructor called\n";
+	// std::cout << "Character Parameterized Constructor called\n";
 }
 
 Character::Character(const Character& other) : name(other.name)
@@ -60,13 +61,13 @@ Character::Character(const Character& other) : name(other.name)
 		clearSlots();
 		copySlots(other);
 	}
-	std::cout << "Character Copy Constructor called\n";
+	// std::cout << "Character Copy Constructor called\n";
 }
 
 Character::~Character(void)
 {
     clearSlots();
-    std::cout << "Character Destructor called\n";
+    // std::cout << "Character Destructor called\n";
 }
 
 Character& Character::operator=(const Character& other)
@@ -77,7 +78,7 @@ Character& Character::operator=(const Character& other)
 		copySlots(other);
 		name = other.name;
 	}
-	std::cout << "Character copy Assignment called\n";
+	// std::cout << "Character copy Assignment called\n";
 	return *this;
 }
 

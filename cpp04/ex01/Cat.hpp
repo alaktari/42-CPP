@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:38:06 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/29 12:43:26 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:48:50 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Cat: public Animal
 {
 	private:
-		Brain *brain;
+		Brain* brain;
 	public:
 		Cat(void);
 		~Cat(void);

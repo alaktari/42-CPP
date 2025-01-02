@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:18:10 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/28 21:56:28 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:04:48 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
     if (this != &other)
         WrongAnimal::operator=(other);
     return *this;
+}
+
+void WrongCat::makeSound(void) const
+{
+    std::cout << "WrongCat: Meow meow meooooooooooooow!!\n";
 }
