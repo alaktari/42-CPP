@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 09:56:04 by alaktari          #+#    #+#             */
-/*   Updated: 2024/12/29 12:43:09 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:57:55 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ Brain& Brain::operator=(const Brain& other)
 
 std::string Brain::getIdea(int idea_index)
 {
-    return this->ideas[idea_index];
+    if (idea_index >= 0 && idea_index <= 100)
+        return this->ideas[idea_index];
+    return "";
 }
 
 void Brain::setIdea(std::string new_idea, int idea_index)
 {
-    this->ideas[idea_index] = new_idea;
+    if (idea_index >= 0 && idea_index <= 100)
+        this->ideas[idea_index] = new_idea;
 }
 
 Brain* Brain::getBrain(void)

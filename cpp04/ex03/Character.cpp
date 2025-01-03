@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:14:57 by alaktari          #+#    #+#             */
-/*   Updated: 2025/01/02 11:33:27 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:03:09 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void Character::clearSlots(void)
 	{
 		if (slot[i])
 		{
-			// std::cout << "clearrrr\n";
 			delete slot[i];
 			slot[i] = NULL;
 		}

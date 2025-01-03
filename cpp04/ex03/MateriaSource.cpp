@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 19:22:27 by alaktari          #+#    #+#             */
-/*   Updated: 2025/01/02 11:33:27 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:04:49 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void MateriaSource::clearMaterias(void)
 	{
 		if (materias[i])
 		{
-			// // std::cout << "====>   I'm clearing <==== \n";
 			delete materias[i];
 			materias[i] = NULL;
 		}
