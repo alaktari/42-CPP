@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:54:56 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/05 17:37:51 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:46:41 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ void Bureaucrat::incrementGrade(void)
 	if (grade == 1)
 		throw GradeTooHighException();
 	grade--;
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try {
+		form.beSigned(*this);
+		std::cout << name << " signed " << form.getName() << "\n";
+	}
+	catch (std::exception& e) {
+		std::cout << name << " couldn’t sign " << form.getName() << " because " << e.what() << "\n";
+	}
 }
 	
 const char* Bureaucrat::GradeTooHighException::what() const throw()

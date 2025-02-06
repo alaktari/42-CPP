@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:43:54 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/05 19:46:13 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:45:07 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #define GRADE_ISLOWER 1
 #define	REQUIREDGRADE_TOOLOW 2
+
+class Bureaucrat;
 
 class Form
 {

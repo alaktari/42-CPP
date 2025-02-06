@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:48:42 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/04 17:06:39 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:44:50 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -32,7 +35,7 @@ class Bureaucrat
 		int			getGrade(void) const;
 		void		incrementGrade(void);
 		void		decrementGrade(void);
-		void		signForm(void);
+		void		signForm(Form& form);
 
 
     //  -------------- Exception classes ------------------

@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:00:30 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/05 22:51:29 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:48:11 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ void	validRequiredGrade(void)
 	delete Ptr;
 }
 
+void	signFormMethod(void)
+{
+	Bureaucrat	bureaucrat("johnBureaucrat", 100);
+	Form		contractForm("Contract", 50, 50);
+
+	std::cout << bureaucrat;
+	bureaucrat.signForm(contractForm);
+}
+
 void	generalTest(void)
 {
 	Bureaucrat	bureaucrat("johnBureaucrat", 11);
@@ -108,5 +117,6 @@ int main()
 	// requiredGradeTooHigh();
 	// bureaucratGradeTooLow();
 	// validRequiredGrade();
+	// signFormMethod();
 	// generalTest();
 }
