@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:48:42 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/07 11:40:33 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:42:06 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat
 		void		incrementGrade(void);
 		void		decrementGrade(void);
 		void		signForm(AForm& form);
+		void		executeForm(AForm const & form);
 
 
     //  -------------- Exception classes ------------------

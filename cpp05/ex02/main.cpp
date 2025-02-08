@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:00:30 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:38:17 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:51:06 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,37 @@ void	vaild_PresidentialPardonForm(void)
 	
 }
 
+void	failed_executeFormMethod(void)
+{
+	PresidentialPardonForm obj("home");
+	Bureaucrat bureaucrat("bob", 6);
+
+	bureaucrat.signForm(obj);
+	try {
+		bureaucrat.executeForm(obj);
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "failed to execute: " << e.what() << "\n";
+	}
+}
+
+void	valid_executeFormMethod(void)
+{
+	PresidentialPardonForm obj("home");
+	Bureaucrat bureaucrat("bob", 5);
+
+	bureaucrat.signForm(obj);
+
+	try {
+		bureaucrat.executeForm(obj);
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "failed to execute: " << e.what() << "\n";
+	}
+}
+
 int main()
 {
 
@@ -121,6 +152,9 @@ int main()
 	// valid_RobotomyRequestForm();
 
 	// failed_PresidentialPardonForm();
-	vaild_PresidentialPardonForm();
+	// vaild_PresidentialPardonForm();
+
+	// failed_executeFormMethod();
+	valid_executeFormMethod();
 	
 }

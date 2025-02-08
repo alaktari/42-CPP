@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:54:56 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/07 11:40:30 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:45:05 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,13 @@ std::ostream &operator<<(std::ostream &output_stream, const Bureaucrat& obj)
 {
 	output_stream << obj.getName() << ", bureaucrat grade: " << obj.getGrade() << "\n";
 	return output_stream;
+}
+
+void		Bureaucrat::executeForm(AForm const & form)
+{
+	if (!form.getSignedStatus())
+		throw AForm::UnsignedFormException();
+	else if (getGrade() > form.getGradeToExecute())
+		throw AForm::GradeTooLowException(GRADE_ISLOWER);
+	std::cout << getName() << " executed " << form.getName() << "\n";
 }
