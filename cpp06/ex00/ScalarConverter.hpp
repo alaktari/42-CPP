@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 09:55:53 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/12 17:51:22 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:16:14 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <climits>
 #include <iomanip>
 #include <cfloat>
+#include <cmath>
 
 class ScalarConverter
 {

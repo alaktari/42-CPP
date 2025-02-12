@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:44:11 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/12 17:51:17 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:19:55 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,17 +105,14 @@ void	ScalarConverter::TypeInt(void)
 
 void	ScalarConverter::TypeFloat(void)
 {
-
-	std::cout << "it's float\n";
-
 	InFloat = std::strtof(param.c_str(), NULL);
 	double ckecker = InFloat;
 	
-	if (InFloat > 255 || InFloat < 0)
+	if (InFloat > 255 || InFloat < 0 || std::isnan(InFloat))
 		charFlag = true;
 	else
 		inChar = static_cast<char>(InFloat);
-	if (ckecker > INT_MAX || ckecker < INT_MIN)
+	if (ckecker > INT_MAX || ckecker < INT_MIN || std::isnan(InFloat))
 		intFlag = true;
 	else
 		InFloat = static_cast<int>(InFloat);
@@ -126,11 +123,11 @@ void	ScalarConverter::TypeDouble(void)
 {
 	inDouble = std::strtod(param.c_str(), NULL);
 	
-	if (inDouble > 255 || inDouble < 0)
+	if (inDouble > 255 || inDouble < 0 || std::isnan(inDouble))
 		charFlag = true;
 	else
 		inChar = static_cast<char>(inDouble);
-	if (inDouble > INT_MAX || inDouble < INT_MIN)
+	if (inDouble > INT_MAX || inDouble < INT_MIN || std::isnan(inDouble))
 		intFlag = true;
 	else
 		inInt = static_cast<int>(inDouble);
