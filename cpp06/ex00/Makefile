@@ -1,5 +1,5 @@
 NAME		= ScalarConverter
-SRC			= main.cpp ScalarConverter.cpp ScalarTypeCaster.cpp
+SRC			= main.cpp ScalarConverter.cpp
 OBJ			= $(SRC:.cpp=.o)
 CXX			= c++
 CXXFLAGS	=  -fsanitize=address -std=c++98
