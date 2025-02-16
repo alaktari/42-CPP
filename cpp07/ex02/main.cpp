@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:52:23 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/16 16:21:50 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:24:59 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int main()
     Array<int> nums(ArraySize);
     Array<char> chars(ArraySize);
 
-    for (int i = 0; i < ArraySize; i++)
+    for (unsigned int i = 0; i < ArraySize; i++)
         nums[i] = (std::rand() % 201 - 100);
 
-    for (int i = 0; i < ArraySize; i++)
+    for (unsigned int i = 0; i < ArraySize; i++)
         std::cout << nums[i] << " ";
     
     std::cout << std::endl;
@@ -39,10 +39,10 @@ int main()
     // ==========================================
 
     char c = 'a';
-    for (int i = 0; i < ArraySize; i++, c++)
+    for (unsigned int i = 0; i < ArraySize; i++, c++)
         chars[i] = c;
 
-    for (int i = 0; i < ArraySize; i++)
+    for (unsigned int i = 0; i < ArraySize; i++)
         std::cout << chars[i] << " ";
 
     std::cout << std::endl;
