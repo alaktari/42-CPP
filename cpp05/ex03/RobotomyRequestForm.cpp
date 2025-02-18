@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:35:49 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:28:39 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:30:06 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	return *this;
 }
 
-void    RobotomyRequestForm::execute(Bureaucrat const & executor)
+void    RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSignedStatus())
 		throw UnsignedFormException();

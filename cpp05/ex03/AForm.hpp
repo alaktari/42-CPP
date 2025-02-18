@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:43:54 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 20:46:09 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:29:19 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class AForm
 		int					getGradeToSign(void) const;
 		int					getGradeToExecute(void) const;
 		void				beSigned(Bureaucrat const & bureaucrat);
-		virtual void		execute(Bureaucrat const & executor) = 0;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 
 		//  -------------- Exception classes ------------------
 

@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:11:34 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:22:52 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:29:49 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PresidentialPardonForm : public AForm
 								~PresidentialPardonForm();
 								PresidentialPardonForm(const PresidentialPardonForm& other);
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& other);
-		void				    execute(Bureaucrat const & executor);
+		void				    execute(Bureaucrat const & executor) const ;
 };
 
 #endif

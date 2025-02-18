@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:59 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 21:15:26 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:37:19 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ AForm* Intern::makeForm(std::string _name, std::string _target)
 		case 2:
 			return new PresidentialPardonForm(_target);
 		case 3:
-			std::cout << "Intern cannot create " << _name << " form" << std::endl;
+			std::cout << "==> Intern cannot create " << _name << " form" << " 👎" << std::endl;
 	}
 	return NULL;
 }

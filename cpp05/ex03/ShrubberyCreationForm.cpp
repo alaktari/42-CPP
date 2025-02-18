@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:10:39 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:31:41 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:30:10 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	treesASCII(const std::string target)
 		file << tree[i];
 }
 
-void    ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {	
 	if (!getSignedStatus())
 		throw UnsignedFormException();

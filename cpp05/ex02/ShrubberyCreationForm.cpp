@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:10:39 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:31:41 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:20:49 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,16 @@ void	treesASCII(const std::string target)
 	std::ofstream file;
 	std::string fileName = target + "_shrubbery";
 	file.open(fileName.c_str());
-
-	std::string tree[10] = 
-	{"               ,@@@@@@@,\n",
+	if (!(file.is_open()))
+	{
+		std::cerr << "Error: Failed to open file!\n";
+		return ;
+	}
+	
+	std::string tree[12] = 
+	{"                                         \n",
+	"                                         \n",
+	"               ,@@@@@@@,\n",
 	"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n",
 	"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n",
 	"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n",
@@ -57,11 +64,11 @@ void	treesASCII(const std::string target)
 	"       |.|        | |         | |\n",
 	"     \\/ ._\\//_/__/  ,\\_//___\\/.  \\_//__/_\n"};
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 12; i++)
 		file << tree[i];
 }
 
-void    ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {	
 	if (!getSignedStatus())
 		throw UnsignedFormException();

@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:59:28 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:07:36 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:29:40 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ShrubberyCreationForm : public AForm
 								~ShrubberyCreationForm();
 								ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& other);
-		void					execute(Bureaucrat const & executor);
+		void					execute(Bureaucrat const & executor) const ;
 };
 
 #endif

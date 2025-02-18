@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:19 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/08 17:08:24 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/18 09:50:50 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class RobotomyRequestForm : public AForm
 								~RobotomyRequestForm();
 								RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm&    operator=(const RobotomyRequestForm& other);
-		void				    execute(Bureaucrat const & executor);
+		void				    execute(Bureaucrat const & executor) const;
 };
 
 #endif
