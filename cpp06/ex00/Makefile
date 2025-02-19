@@ -2,7 +2,7 @@ NAME		= ScalarConverter
 SRC			= main.cpp ScalarConverter.cpp
 OBJ			= $(SRC:.cpp=.o)
 CXX			= c++
-CXXFLAGS	=  -fsanitize=address -std=c++98
+CXXFLAGS	=  -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

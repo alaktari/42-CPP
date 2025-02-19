@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:37:51 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/12 17:50:48 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:22:50 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int main(int ac, char** av)
 {
-    if (ac != 2)
-        return 0;
+	if (ac != 2)
+	{
+	    std::cout << "./ScalarConverter + [Expected an Input!!]\n";
+	    return 0;
+	}
 
-    ScalarConverter::convert(av[1]);
+	ScalarConverter::convert(av[1]);
 }

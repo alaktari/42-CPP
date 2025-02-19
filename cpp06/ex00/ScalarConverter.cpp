@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:44:11 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/12 22:19:55 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:45:44 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,10 @@ std::string	ScalarConverter::param = "";
 char		ScalarConverter::inChar = 0;
 int			ScalarConverter::inInt = 0;
 double		ScalarConverter::inDouble = 0.0;
-float		ScalarConverter::InFloat = 0.0f;
+float		ScalarConverter::inFloat = 0.0f;
 bool		ScalarConverter::intFlag = false;
 bool		ScalarConverter::charFlag = false;
 bool		ScalarConverter::floatFlag = false;
-
-ScalarConverter::ScalarConverter(void)
-{
-	// std::cout << "ScalarConverter Constructor callefd\n";
-}
-
-ScalarConverter::~ScalarConverter(void)
-{
-	// std::cout << "ScalarConverter Destructor called\n";
-}
 
 bool ScalarConverter::isChar(void)
 {
@@ -38,7 +28,10 @@ bool ScalarConverter::isChar(void)
 	size_t frontPoss = param.find_first_of('\'');
 	size_t BackPoss = param.find_last_of('\'');
 	if (!frontPoss && BackPoss == 2 && param.length() == 3)
+	{
+		inChar = param[1];
 		return true;
+	}
 	return false;
 }
 
@@ -50,6 +43,7 @@ bool ScalarConverter::isInt(void)
 	long value = std::strtol(param.c_str(), &endPtr, 10);
 	if (*endPtr != '\0' || value > INT_MAX || value < INT_MIN)
 		return false;
+	inInt = static_cast<int>(value);
 	return true;
 }
 
@@ -59,12 +53,10 @@ bool ScalarConverter::isFloat(void)
         return false;
 
     char *endPtr;
-    float value = std::strtof(param.c_str(), &endPtr);
-
-    if (*endPtr == 'f' && *(++endPtr) == '\0')
-        return true;
-    if (*endPtr == '\0' && param.find('e') < param.length())
-        return true;
+    inFloat = std::strtof(param.c_str(), &endPtr);
+    if (param[0] != 'f' && *endPtr == 'f' && *(endPtr - 1) != '.'
+			&& *(++endPtr) == '\0')
+		return true;
     return false;
 }
 
@@ -74,56 +66,47 @@ bool	ScalarConverter::isDouble(void)
         return false;
 
     char *endPtr;
-    double value = std::strtod(param.c_str(), &endPtr);
-
-    if (*endPtr == '\0')
-        return true;
-    return false;
+    inDouble = std::strtod(param.c_str(), &endPtr);
+    if (*endPtr == '\0' && (*(endPtr - 1) != '.'))
+		return true;
+	return false;
 }
 
 void	ScalarConverter::TypeChar(void)
 {
-	inChar = param[1];
-	
 	inInt = (static_cast<int>(inChar));
-	InFloat = static_cast<float>(inChar);
+	inFloat = static_cast<float>(inChar);
 	inDouble = static_cast<double>(inChar);
-	
 }
 
 void	ScalarConverter::TypeInt(void)
 {
-	inInt = atoi(param.c_str());
-	
-	if (inInt > 255 || inInt < 0)
+	if (inInt > 127 || inInt < 0)
 		charFlag = true;
 	else
 		inChar = static_cast<char>(inInt);
-	InFloat = static_cast<float>(inInt);
+	inFloat = static_cast<float>(inInt);
 	inDouble = static_cast<double>(inInt);
 }
 
 void	ScalarConverter::TypeFloat(void)
 {
-	InFloat = std::strtof(param.c_str(), NULL);
-	double ckecker = InFloat;
+	double checker = static_cast<double>(inFloat);
 	
-	if (InFloat > 255 || InFloat < 0 || std::isnan(InFloat))
+	if (inFloat > 127 || inFloat < 0 || std::isnan(inFloat))
 		charFlag = true;
 	else
-		inChar = static_cast<char>(InFloat);
-	if (ckecker > INT_MAX || ckecker < INT_MIN || std::isnan(InFloat))
+		inChar = static_cast<char>(inFloat);
+	if (checker > INT_MAX || checker < INT_MIN || std::isnan(inFloat))
 		intFlag = true;
 	else
-		InFloat = static_cast<int>(InFloat);
-	inDouble = static_cast<double>(InFloat);
+		inInt = static_cast<int>(inFloat);
+	inDouble = static_cast<double>(inFloat);
 }
 
 void	ScalarConverter::TypeDouble(void)
 {
-	inDouble = std::strtod(param.c_str(), NULL);
-	
-	if (inDouble > 255 || inDouble < 0 || std::isnan(inDouble))
+	if (inDouble > 127 || inDouble < 0 || std::isnan(inDouble))
 		charFlag = true;
 	else
 		inChar = static_cast<char>(inDouble);
@@ -134,11 +117,13 @@ void	ScalarConverter::TypeDouble(void)
 	if (inDouble > FLT_MAX || inDouble < -FLT_MAX)
 		floatFlag = true;
 	else
-		InFloat = static_cast<float>(inDouble);
+		inFloat = static_cast<float>(inDouble);
 }
 
 void	ScalarConverter::displayer(void)
 {
+
+	// ----------- display Char -------------- 
 	std::cout << "char: ";
 	if (isprint(inChar) && !charFlag)
 		std::cout << '\'' << inChar << "'\n";
@@ -146,23 +131,41 @@ void	ScalarConverter::displayer(void)
 		std::cout << "Non displayable\n";
 	else
 		std::cout << "impossible\n";
-	
+	// ----------------------------------------
+
+
+	// ---------- Display Int -----------------
 	std::cout << "int: ";
 	if (!intFlag)
 		std::cout << inInt << "\n";
 	else
 		std::cout << "impossible\n";
-		
+	// ----------------------------------------
+
+
+	// ---------- Display Int -----------------
 	std::cout << "float: ";
 	if (!floatFlag)
-		std::cout << std::fixed << InFloat << "f\n";
+	{
+		float	checker = static_cast<float>(static_cast<int>(inFloat));
+
+		if (inFloat > checker)
+			std::cout << inFloat << "f\n";
+		else
+			std::cout << std::fixed << std::setprecision(1) << inFloat << "f\n";
+	}
 	else
 		std::cout << "impossible\n";
+	// ----------------------------------------
+
+
+	// ---------- Display Int -----------------
 	std::cout << "Double: " << inDouble << "\n";
+	// ----------------------------------------
 	
 }
 
-int	ScalarConverter::convert(std::string _param)
+void	ScalarConverter::convert(std::string _param)
 {
 	param = _param;
 	
@@ -175,7 +178,9 @@ int	ScalarConverter::convert(std::string _param)
 	else if (isDouble())
 		TypeDouble();
 	else
-		return ((std::cout << "Invalid input\n"), 0);
+	{
+		std::cout << "Invalid input: '" << param << "'\n";
+		return ;
+	}
 	displayer();
-	return 0;
 }
