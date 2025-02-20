@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serialization.cpp                                  :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 22:48:11 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/13 16:39:03 by alaktari         ###   ########.fr       */
+/*   Created: 2025/02/19 15:55:19 by alaktari          #+#    #+#             */
+/*   Updated: 2025/02/20 12:06:41 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serialization.hpp"
+#ifndef DATA_HPP
+#define DATA_HPP
 
-Serialization::Serialization(void) {}
-Serialization::~Serialization(void) {}
+#include <string>
 
-uintptr_t Serialization::serialize(Data* ptr)
+struct Data
 {
-    return (reinterpret_cast<uintptr_t>(ptr));
-}
+	std::string		name;
+	unsigned int	age;
+};
 
-Data* Serialization::deserialize(uintptr_t raw)
-{
-    return (reinterpret_cast<Data *>(raw));
-}
+#endif
