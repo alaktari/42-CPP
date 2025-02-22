@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 21:06:18 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/16 16:22:10 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/22 10:25:49 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Array
 		Array& operator=(const Array& other);
 		T& operator[](unsigned int);
 		unsigned int size(void) const;
+		bool	isEmpty(void);
 
 		//  Exception Class
 		class InvalidIndexException : public std::exception {
@@ -67,7 +68,7 @@ Array<T>::Array(const Array& other) : _size(other._size)
 	if (this != &other)
 	{
 		arr = new T[_size];
-		for (int i = 0; i < _size; i++)
+		for (unsigned int i = 0; i < _size; i++)
 			arr[i] = other.arr[i];
 	}
 }
@@ -94,11 +95,31 @@ unsigned int Array<T>::size(void) const
 }
 
 template <class T>
+bool Array<T>::isEmpty(void)
+{
+	if (!arr)
+		return true;
+	return false;
+}
+
+template <class T>
 T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= _size || index < 0)
 		throw InvalidIndexException();
 	return arr[index];
+}
+
+template <class T>
+std::ostream &operator<<(std::ostream &output_stream, Array<T>& arr)
+{
+	unsigned int arrSize = arr.size();
+
+	if (arr.isEmpty())
+		return output_stream;
+	for (unsigned int i = 0; i < arrSize; i++)
+        output_stream << arr[i] << " ";
+	return output_stream;
 }
 
 #endif
