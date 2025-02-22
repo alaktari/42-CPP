@@ -1,5 +1,10 @@
 #include "iter.hpp"
-#include "function_templates.hpp"
+
+template <typename anyType>
+void printElem(anyType& elem)
+{
+	std::cout << elem << " ";
+}
 
 void doubleElem(int& elem)
 {
@@ -20,7 +25,7 @@ int main()
 		::iter(arr, 5, doubleElem);
 		::iter(arr, 5, printElem);
 	}
-	std::cout << "=========================\n";
+	std::cout << "\n=========================\n";
 	{
 		std::string str = "abCd123";
 
