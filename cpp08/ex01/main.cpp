@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 11:51:38 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/25 10:14:29 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:41:29 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,34 @@ void	printElements(Span& span)
 	std::cout << "\n";
 }
 
-// int main()
-// {
-// 	Span span1(4);
+void test(void)
+{
+	Span span1(3);
 
-// 	try {
-// 		span1.addNumber(0);
-// 		span1.addNumber(111);
-// 		span1.addNumber(2);
-// 		span1.addNumber(-1);
-// 	}
-// 	catch (std::exception& e) {
-// 		std::cerr << "Exception: " << e.what() << "\n";
-// 	}
+	try {
+		span1.addNumber(0);
+		span1.addNumber(111);
+		span1.addNumber(2);
+		span1.addNumber(-1);
+	}
+	catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << "\n";
+	}
 	
-// 	std::cout << "span: ";
-// 	printElements(span1);
+	std::cout << "span: ";
+	printElements(span1);
 
-// 	try {
+	try {
 
-// 		int shortest = span1.shortestSpan();
-// 		int longest = span1.longestSpan();
-// 		std::cout << "shortest span ==> [" << shortest << "]\n";
-// 		std::cout << "longest span ==> [" << longest << "]\n";
-// 	}
-// 	catch (std::exception& e) {
-// 		std::cerr << "Exception: " << e.what() << "\n";
-// 	}
-// }
+		int shortest = span1.shortestSpan();
+		int longest = span1.longestSpan();
+		std::cout << "shortest span ==> [" << shortest << "]\n";
+		std::cout << "longest span ==> [" << longest << "]\n";
+	}
+	catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << "\n";
+	}
+}
 
 int main()
 {
@@ -59,9 +59,10 @@ int main()
 	sp.addNumber(9);
 	sp.addNumber(11);
 
-	// printElements(sp);
-
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
+
+	test();
+
 	return 0;
 }

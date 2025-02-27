@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 11:33:22 by alaktari          #+#    #+#             */
-/*   Updated: 2025/02/25 10:16:55 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:42:55 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Span::Span(void) : _capacity(2), _size(0), _shortSpan(0),
 					_longSpan(0), _arrInts() {
-	// std::cout << "Default Copy constructor called\n";
+	// std::cout << "Default constructor called\n";
 	_arrInts.reserve(_capacity);
 }
 
 Span::Span(unsigned int N) : _capacity(N), _size(0), _shortSpan(0),
 								_longSpan(0), _arrInts() {
-	// std::cout << "Span Constructor called\n";
+	// std::cout << "Span Paramitrized Constructor called\n";
 	_arrInts.reserve(_capacity);
 }
 
