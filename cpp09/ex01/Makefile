@@ -2,7 +2,7 @@ NAME = RPN
 SRC = main.cpp RPN.cpp
 OBJ = $(SRC:.cpp=.o)
 CXX = c++
-CXXFLAGS = -std=c++98 #-Wall -Wextra -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 all: $(NAME)
 
