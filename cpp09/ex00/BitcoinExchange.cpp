@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:22:47 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/05 18:02:42 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:24:22 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ std::vector<int> spliteDate(std::string& buffer, char delimeter, float& value)
 	std::stringstream ss(buffer);
 	std::string token;
 
-	while (getline(ss, token, delimeter))
+	while (getline(ss, token, delimeter))	
 		splited.push_back(std::strtod(token.c_str(), NULL));
 	value = getTheValue(token);
 	return splited;
@@ -40,21 +40,7 @@ void BitcoinExchange::getDataBase(void)
 	getline(databaseFile, buffer);
 	while (getline(databaseFile, buffer))
 	{	
-		std::vector<int> key = spliteDate(buffer, '-', value);
-
-		if (key[YEAR] < 2009 || key[YEAR] > 2022)
-			throw BitcoinExchange::BtcExchangeException(dateHolder, BADINPUT);
-
-		
-		std::cout << "\n[";
-		for (int i = 0; i < key.size(); i++) {
-			if (i)
-				std::cout << "-";
-			std::cout << key[i];
-		}
-		std::cout << "]\n";
-		exit(0);
-		
+		std::vector<int> key = spliteDate(buffer, '-', value);	
 		databaseHolder[key] = value;
 	}
 }
@@ -69,7 +55,7 @@ bool	getDateParts(int& datePart, std::string& token, int tokenNum)
 		if (token.size() != 4)
 			return false;
 		currPart = std::strtol(token.c_str(), &endPtr, 10);
-		if (*endPtr != '\0' || currPart > 2025 || currPart < 2009)
+		if (*endPtr != '\0' || currPart > 2022 || currPart < 2009)
 			return false;
 		datePart = currPart;
 	}
@@ -78,7 +64,7 @@ bool	getDateParts(int& datePart, std::string& token, int tokenNum)
 		if (token.size() != 2)
 			return false;
 		currPart = std::strtol(token.c_str(), &endPtr, 10);
-		if (*endPtr != '\0' || currPart > 12 || currPart < 0)
+		if (*endPtr != '\0' || currPart > 12 || currPart <= 0)
 			return false;
 		datePart = currPart;
 	}
@@ -87,7 +73,7 @@ bool	getDateParts(int& datePart, std::string& token, int tokenNum)
 		if (token.size() != 3)
 			return false;
 		currPart = std::strtol(token.c_str(), &endPtr, 10);
-		if (*endPtr != ' ' || currPart > 31 || currPart < 0)
+		if (*endPtr != ' ' || currPart > 31 || currPart <= 0)
 			return false;
 		datePart = currPart;
 	}
@@ -105,12 +91,16 @@ std::vector<int>	getDate(std::string& dateHolder, bool& checker)
 	while (getline(ss, token, '-'))
 	{
 		if (!getDateParts(datePart, token, tokenNum))
-			throw BitcoinExchange::BtcExchangeException(dateHolder, BADINPUT);
+			throw BitcoinExchange::BtcExchangeException(dateHolder, INVALIDDATE);
 		date.push_back(datePart);
 		tokenNum++;
 	}
 	if (tokenNum != 3)
 		checker = true;
+	if (date[YEAR] == 2009) {
+		if (date[MONTH] == 1 && date[DAY] < 2)
+			throw BitcoinExchange::BtcExchangeException(dateHolder, INVALIDDATE);
+	}
 	return date;
 }
 
@@ -136,7 +126,7 @@ std::vector<int>	BitcoinExchange::spliteLine(std::string& inputLine, float& valu
 			value = std::strtof(token.c_str(), &endPtr);
 			if (token[0] != ' ' || !token[1] || *endPtr != '\0')
 				throw BitcoinExchange::BtcExchangeException(inputLine, BADINPUT);
-			else if ((double)value > INT_MAX)
+			else if ((double)value > 1000)
 				throw BitcoinExchange::BtcExchangeException(inputLine, TOOLARGENUMBER);
 			else if ((double)value < 0)
 				throw BitcoinExchange::BtcExchangeException(inputLine, NOTPOSSITIVE);
@@ -168,12 +158,14 @@ void	decrementDate(std::vector<int>& key)
 
 void	BitcoinExchange::calculateAndDisplay(std::vector<int> key, float value)
 {
-	float	calculatedValue;
+	float			calculatedValue;
+	unsigned int	size;
 	while (1)
 	{
 		if (databaseHolder.find(key) != databaseHolder.end()) {
 			calculatedValue = value * databaseHolder[key];
-			for (int i = 0; i < key.size(); i++) {
+			size = key.size();
+			for (unsigned int i = 0; i < size; i++) {
 				if (i)
 					std::cout << "-";
 				if (key[i] < 10)
@@ -211,27 +203,47 @@ void	BitcoinExchange::outputValues(void)
 
 BitcoinExchange::BitcoinExchange(std::string inputFileName)
 {
-	std::string database = "data.csv";
+	databaseFilePath = "data.csv";
+	inputFilePath = inputFileName;
 	
-	inputFile.open(inputFileName.c_str());
-	databaseFile.open(database.c_str());
+	inputFile.open(inputFilePath.c_str());
+	databaseFile.open(databaseFilePath.c_str());
 
+	if (!databaseFile.is_open())
+		throw BtcExchangeException(databaseFilePath, InvalidDataBaseFile);
+	
 	if (!inputFile.is_open())
-		throw BtcExchangeException(inputFileName, InvalidInputFile);
+		throw BtcExchangeException(inputFilePath, InvalidInputFile);
 
-	if (databaseFile.is_open())
-		std::cout << "is opened\n";
-	else
-		throw BtcExchangeException(database, InvalidDataBaseFile);
-	firstKey.push_back(2010);
-	firstKey.push_back(8);
-	firstKey.push_back(20);
-	lastKey.push_back(2022);
-	lastKey.push_back(03);
-	lastKey.push_back(29);
 	this->getDataBase();
 	this->outputValues();
 }
+
+BitcoinExchange::~BitcoinExchange(void) {
+	databaseFile.close();
+	inputFile.close();
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) {
+	*this = other;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
+	if (this != &other) {
+		databaseHolder = other.databaseHolder;
+		inputFilePath = other.inputFilePath;
+		databaseFilePath = other.databaseFilePath;
+		
+		databaseFile.open(databaseFilePath.c_str());
+		if (!databaseFile.is_open())	
+			throw BtcExchangeException(databaseFilePath, InvalidDataBaseFile);
+		inputFile.open(inputFilePath.c_str());
+		if (!inputFile.is_open())
+			throw BtcExchangeException(inputFilePath, InvalidInputFile);
+	}
+	return *this;
+}
+
 
 BitcoinExchange::BtcExchangeException::BtcExchangeException(std::string param, int exceptionType)
 {
@@ -247,6 +259,8 @@ BitcoinExchange::BtcExchangeException::BtcExchangeException(std::string param, i
 		errorMssg = "Error: too large a number.";
 	else if (exceptionType == NOTPOSSITIVE)
 		errorMssg = "Error: not a positive number.";
+	else if (exceptionType == INVALIDDATE)
+		errorMssg = "Invalid Date => " + param;
 }
 
 const char* BitcoinExchange::BtcExchangeException::what(void) const throw()

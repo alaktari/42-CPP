@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:38:15 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/05 17:49:09 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:19:50 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int main(int ac, char **av)
 		}
 	}
 	else
-		std::cout << "Invalid input!!\n";
+		std::cout << "Error: could not open file.\n";
+	return 0;
 }

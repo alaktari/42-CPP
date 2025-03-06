@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:34:23 by imihihamid        #+#    #+#             */
-/*   Updated: 2025/03/05 18:01:18 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:58:38 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #define BADINPUT 3
 #define TOOLARGENUMBER 4
 #define NOTPOSSITIVE 5
+#define INVALIDDATE 6
 
 #define YEAR 0
 #define MONTH 1
@@ -37,20 +38,20 @@
 class BitcoinExchange
 {
 	private:
-		std::ifstream			databaseFile;
-		std::ifstream			inputFile;
+		std::string							databaseFilePath;
+		std::string							inputFilePath;
+		std::ifstream						databaseFile;
+		std::ifstream						inputFile;
 		std::map<std::vector<int>, float>	databaseHolder;
-		std::vector<int>					firstKey;
-		std::vector<int>					lastKey;
 	public:
 		BitcoinExchange(std::string fileName);
 		void					getDataBase(void);
 		void					outputValues(void);
 		std::vector<int>		spliteLine(std::string& inputLine, float& value);
 		void					calculateAndDisplay(std::vector<int> key, float value);
-		// ~BitcoinExchange(void);
-		// BitcoinExchange(const BitcoinExchange& other);
-		// BitcoinExchange& operator=(const BitcoinExchange& other);
+		~BitcoinExchange(void);
+		BitcoinExchange(const BitcoinExchange& other);
+		BitcoinExchange& operator=(const BitcoinExchange& other);
 
 		class BtcExchangeException : public std::exception
 		{
