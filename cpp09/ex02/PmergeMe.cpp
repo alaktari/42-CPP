@@ -6,38 +6,34 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:54:08 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/07 16:15:59 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:12:59 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-void    PairElements(std::deque<unsigned int>& container)
+static void	removeExtraSpaces(std::string& params)
 {
-    
+	std::string	newOne;
+	int			paramSize = params.size();
+
+	for (int i = 0; i < paramSize; i++) {
+		if (!newOne.empty() && params[i] == ' ' && !isspace(params[i+1]) && params[i+1] != '\0')
+			newOne += ' ';
+		else if (!isspace(params[i]))
+			newOne += params[i];
+	}
+	params = newOne;
 }
 
-void    PairElements(std::list<unsigned int>& container)
+void	concatenatingArguments(std::string& params, char** av, int ac)
 {
-    
+	std::string helper;
+
+	for (int i = 1; i < ac; i++) {
+		if (i > 1)
+			params += " ";
+		params += av[i];
+	}
+	removeExtraSpaces(params);
 }
-
-// void    TimeTrackedSort(std::string param, std::deque<unsigned int> container1, std::list<unsigned int> container2)
-// {
-//     std::clock_t start1 = std::clock();
-//     collectParsedIntegers(param, container1);
-//     std::clock_t end1 = std::clock();
-//     double timeDeque = double(end1 - start1) / CLOCKS_PER_SEC;
-    
-//     std::clock_t start2 = std::clock();
-// 	collectParsedIntegers(param, container2);
-//     std::clock_t end2 = std::clock();
-//     double timeList = double(end2 - start2) / CLOCKS_PER_SEC;
-
-
-    
-
-//     std::cout << std::fixed;
-//     std::cout << "Deque ==> " << timeDeque << "\n";
-//     std::cout << "List ==> " << timeList << "\n";
-// }
