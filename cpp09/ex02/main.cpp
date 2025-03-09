@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:41:48 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/08 19:30:49 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/09 12:58:27 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main(int ac, char **av)
 	
 	concatenatingArguments(params, av, ac);
 
-	float duration_deque = TimeTrackedSort(params, container1);
-	float duration_list = TimeTrackedSort(params, container2);
+	double dequeTime = TimeTrackedSort(params, container1);
+	double listTime = TimeTrackedSort(params, container2);
 
-	desplayElementAndTime(container1, duration_deque, duration_list, params);
+	desplayElementAndTime(container1, dequeTime, listTime, params);
 }

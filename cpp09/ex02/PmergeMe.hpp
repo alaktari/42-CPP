@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:40:55 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/08 19:31:33 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:16:17 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@
 #include <list>
 #include <sstream>
 #include <climits>
-#include <ctime>
-#include <cstdlib>
 #include <algorithm>
-#include <ctime>
 
-void	concatenatingArguments(std::string& params, char** av, int ac);
+void		concatenatingArguments(std::string& params, char** av, int ac);
 
 template <typename T>
-void	desplayElementAndTime(T container, float duration_deque, float duration_list, std::string params)
+void	desplayElementAndTime(T container, double dequeTime, double listTime, std::string params)
 {
 	size_t cSize = container.size();
 	T helper = container;
@@ -48,9 +45,9 @@ void	desplayElementAndTime(T container, float duration_deque, float duration_lis
 		}
 	}
 	std::cout << "\nTime to process a range of " << cSize;
-	std::cout << " elements with std::deque :  " << duration_deque << " us\n";
+	std::cout << " elements with std::deque :  " << dequeTime << " us\n";
 	std::cout << "Time to process a range of " << cSize;
-	std::cout << " elements with std::list  :  " << duration_list << " us\n";
+	std::cout << " elements with std::list  :  " << listTime << " us\n";
 }
 
 template<typename T>
@@ -86,29 +83,29 @@ void	getPairsAndSort(T container, std::pair<unsigned int, unsigned int>* myPairs
 }
 
 template <typename T>
-void	getLosersAndWiners(T& losers, T& winers, std::pair<unsigned int, unsigned int>* myPairs,
+void	getLosersAndwinners(T& losers, T& winners, std::pair<unsigned int, unsigned int>* myPairs,
 							unsigned int pairNum)
 {
 	if (pairNum < 2) {
-		winers.push_back(myPairs[0].first);
-		winers.push_back(myPairs[0].second);
+		winners.push_back(myPairs[0].first);
+		winners.push_back(myPairs[0].second);
 		return ;
 	}
 	for (unsigned int i = 0; i < pairNum; i++) {
 		losers.push_back(myPairs[i].first);
-		winers.push_back(myPairs[i].second);
+		winners.push_back(myPairs[i].second);
 	}
 }
 
 template <typename T>
-void	sortLastTwoElement(T& winers)
+void	sortLastTwoElement(T& winners)
 {
 	unsigned int	temp;
 
-	if (winers.front() > winers.back()) {
-		temp = winers.front();
-		winers.pop_front();
-		winers.push_back(temp);
+	if (winners.front() > winners.back()) {
+		temp = winners.front();
+		winners.pop_front();
+		winners.push_back(temp);
 	}
 }
 
@@ -121,13 +118,13 @@ void	binarySearchInsertForOne(T& sortedContainer, unsigned int newElement)
 }
 
 template <typename T>
-void	binarySearchInsert(T& winers, T losers)
+void	binarySearchInsert(T& winners, T losers)
 {
 	if (losers.empty())
 		return ;
 	while (!losers.empty()) {
-		sortLastTwoElement(winers);
-		binarySearchInsertForOne(winers, losers.front());
+		sortLastTwoElement(winners);
+		binarySearchInsertForOne(winners, losers.front());
 		losers.pop_front();
 	}
 }
@@ -136,38 +133,38 @@ template <typename T>
 void    mergeInsertAlgo(T& container)
 {
 	T										losers;
-	T										winers;
+	T										winners;
 	unsigned int							cSize = container.size();
 	unsigned int							pairNum = cSize / 2;
 	std::pair<unsigned int, unsigned int>	myPairs[pairNum];
 	ssize_t									oddElement = -1;
 
+	if (cSize == 1)
+		return ;
 	getPairsAndSort(container, myPairs, pairNum);
-	getLosersAndWiners(losers, winers, myPairs, pairNum);
+	getLosersAndwinners(losers, winners, myPairs, pairNum);
 
 	if (cSize % 2)
 		oddElement = container.back();
 	
 	if (pairNum > 2) 
-		mergeInsertAlgo(winers);
+		mergeInsertAlgo(winners);
 
 	if (oddElement != -1)
-		binarySearchInsertForOne(winers, oddElement);
-	binarySearchInsert(winers, losers);
-	container = winers;
+		binarySearchInsertForOne(winners, oddElement);
+	binarySearchInsert(winners, losers);
+	container = winners;
 }
 
 template<typename T>
-float    TimeTrackedSort(std::string& param, T& container)
+double	TimeTrackedSort(std::string& param, T& container)
 {
-	clock_t start_deque = clock();
+	clock_t start = clock();
     collectParsedIntegers(param, container);
-	clock_t end_deque = clock();
-
     mergeInsertAlgo(container);
+	clock_t end = clock();
 
-	return (float(end_deque - start_deque) / CLOCKS_PER_SEC * 1000);
-
+	return (static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000);
 }
 
 #endif
