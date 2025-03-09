@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:54:08 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/09 13:15:34 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:52:22 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,50 @@ void	concatenatingArguments(std::string& params, char** av, int ac)
 		params += av[i];
 	}
 	removeExtraSpaces(params);
+}
+
+void	printElemts(std::deque<unsigned int> de)
+{
+	size_t deSize = de.size();
+
+	for (size_t i = 0; i < deSize; i++) {
+		if (i)
+			std::cout << " ";
+		std::cout << de[i];
+		if (deSize > 5 && i == 3) {
+			std::cout << " [...]\n";
+			break ;
+		}
+	}
+}
+
+void	printElemts(std::list<unsigned int> lst)
+{
+	size_t lstSize = lst.size();
+
+	for (size_t i = 0; i < lstSize; i++)
+	{
+		if (i)
+			std::cout << " ";
+		std::cout << lst.front();
+		lst.pop_front();
+		if (lstSize > 5 && i == 3) {
+			std::cout << " [...]\n";
+			break ;
+		}
+	}
+}
+
+void	printParams(std::string params)
+{
+	for (unsigned long i = 0, spaces = 0; i < params.size(); i++) {
+		std::cout << params[i];
+		if (params[i] == ' ')
+			spaces++;
+		if (spaces == 4) {
+			std::cout << "[...]\n";
+			break ;
+		}
+	}
+	
 }

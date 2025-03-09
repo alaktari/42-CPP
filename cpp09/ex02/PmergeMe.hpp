@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:40:55 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/09 13:16:17 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:52:33 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 #include <algorithm>
 
 void		concatenatingArguments(std::string& params, char** av, int ac);
+void		printElemts(std::deque<unsigned int> de);
+void		printElemts(std::list<unsigned int> lst);
+void		printParams(std::string params);
+
 
 template <typename T>
 void	desplayElementAndTime(T container, double dequeTime, double listTime, std::string params)
@@ -28,23 +32,12 @@ void	desplayElementAndTime(T container, double dequeTime, double listTime, std::
 	size_t cSize = container.size();
 	T helper = container;
 
-	if (cSize > 8) {
-		params.erase(16, params.size() - 16);
-		params += "[...]";
-	}
-	std::cout << "Before:  " << params << "\n";
+	std::cout << "Before:  ";
+	printParams(params);
 	std::cout << "After:   ";
-	for (size_t i = 0; i < cSize; i++) {
-		if (i)
-			std::cout << " ";
-		std::cout << container.front();
-		container.pop_front();
-		if (cSize > 8 && i == 7) {
-			std::cout << " [...]";
-			break ;
-		}
-	}
-	std::cout << "\nTime to process a range of " << cSize;
+	printElemts(container);
+	
+	std::cout << "Time to process a range of " << cSize;
 	std::cout << " elements with std::deque :  " << dequeTime << " us\n";
 	std::cout << "Time to process a range of " << cSize;
 	std::cout << " elements with std::list  :  " << listTime << " us\n";

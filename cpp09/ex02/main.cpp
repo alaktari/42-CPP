@@ -6,7 +6,7 @@
 /*   By: alaktari <alaktari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:41:48 by alaktari          #+#    #+#             */
-/*   Updated: 2025/03/09 12:58:27 by alaktari         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:46:02 by alaktari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int main(int ac, char **av)
 	double dequeTime = TimeTrackedSort(params, container1);
 	double listTime = TimeTrackedSort(params, container2);
 
-	desplayElementAndTime(container1, dequeTime, listTime, params);
+	desplayElementAndTime(container2, dequeTime, listTime, params);
 }
